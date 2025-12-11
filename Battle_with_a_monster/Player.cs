@@ -20,11 +20,36 @@ namespace Battle_with_a_monster
 
         }
 
-        public Player(int newAmountOfHealthBeingRestored, int newSpecialAttackCofficient)
+        public Player(int newHealth, int newMaxHealth, string newName, int newMinStrength, int newMaxStrength, int newAmountOfHealthBeingRestored, int newSpecialAttackCofficient)
+            :base(newHealth, newMaxHealth, newName, newMinStrength, newMaxStrength)
         {
             _amountOfHealthBeingRestored = newAmountOfHealthBeingRestored;
             _specialAttackCoefficient = newSpecialAttackCofficient;
             _usingSpecialAttack = false;
+        }
+
+        public string AmountOfHealthBeingRestored 
+        {
+            get 
+            {
+                return $"{_amountOfHealthBeingRestored}";
+            }
+        }
+
+        public string UsingSpecialAttack 
+        {
+            get 
+            {
+                if (_usingSpecialAttack == false)
+                {
+                    return "Есть";
+                }
+                else 
+                {
+                    return "Нету";
+                }
+                
+            }
         }
 
         public int GetSpecialAttackDamage(int damege)

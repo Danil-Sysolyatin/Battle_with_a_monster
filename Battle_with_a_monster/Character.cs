@@ -47,6 +47,32 @@ namespace Battle_with_a_monster
 
         }
 
+        public string Health 
+        {
+            get { return $"{_health}"; }
+
+        }
+
+        public string MaxHealth
+        {
+            get { return $"{_maxHealth}"; }
+        }
+
+        public string Name
+        {
+            get { return _name; }
+        }
+
+        public string MinStrength 
+        {
+            get { return $"{_minStrength}"; }
+        }
+
+        public string MaxStrength 
+        {
+            get { return $"{_maxStrength}"; }
+        }
+
         public int GetAttackDamage()
         {
             Random attack = new Random();
@@ -64,6 +90,10 @@ namespace Battle_with_a_monster
             _health = _health + getHeal;
             return _health;
         }
+
+        
+        
+
 
     }
 }
