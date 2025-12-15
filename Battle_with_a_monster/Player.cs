@@ -28,11 +28,11 @@ namespace Battle_with_a_monster
             _usingSpecialAttack = false;
         }
 
-        public string AmountOfHealthBeingRestored 
+        public int AmountOfHealthBeingRestored 
         {
             get 
             {
-                return $"{_amountOfHealthBeingRestored}";
+                return _amountOfHealthBeingRestored;
             }
         }
 
@@ -46,16 +46,21 @@ namespace Battle_with_a_monster
                 }
                 else 
                 {
-                    return "Нету";
+                    return "Нет";
                 }
                 
             }
         }
 
-        public int GetSpecialAttackDamage(int damege)
+        public int GetSpecialAttackDamage()
         {
+            if (_usingSpecialAttack == true) 
+            {
+                return 0;
+            }
+
             _usingSpecialAttack = true;
-            return damege * _specialAttackCoefficient;
+            return GetAttackDamage() * _specialAttackCoefficient;
 
         }
     }

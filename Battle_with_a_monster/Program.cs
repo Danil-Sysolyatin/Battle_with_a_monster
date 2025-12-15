@@ -12,7 +12,7 @@
             bool duration = true;
             while (duration == true)
             {
-                Console.WriteLine("Выберите команду:");
+                Console.WriteLine("\nВыберите команду:");
                 Console.WriteLine("  Начать игру   -> 1");
                 Console.WriteLine("  Выйти из игры -> 2");
                 Console.Write("Команда -> ");
@@ -22,19 +22,35 @@
                 {
                     case "1":
 
-                        Console.Write("Введите имя Персонажа -> ");
+                        Console.Write("\nВведите имя Персонажа -> ");
                         string nameCharacter = Console.ReadLine();
-                        Console.Write("Введите имя Монстра -> ");
+                        Console.Write("\nВведите имя Монстра -> ");
                         string nameMonster = Console.ReadLine();
 
-                        Player player = new Player(100, 100, nameCharacter, 7, 15, 15, 20);
+                        Player player = new Player(100, 100, nameCharacter, 8, 15, 15, 2);
                         Monster monster = new Monster(100, 100, nameMonster, 7, 15);
                         Game part = new Game(player, monster);
-                        Console.Write($"\n{part.GetInfoP(player)} \t\t{part.GetInfoM(monster)}");
-                        
+
+                        while (player.IsAlive == true && monster.IsAlive == true) 
+                        {
+                            Console.WriteLine($"\n{part.StartGame(player, monster)}");
+                            Console.WriteLine($"\n{part.StepPlayer()}");
+
+                            Console.Write("Команда -> ");
+                            string choice = Console.ReadLine();
+
+                            Console.WriteLine($"\n{part.ProcessPlayerChoice(choice)}");
+                            Console.WriteLine($"\n{part.StepMonster()}");
+                            
+                        }
+                        Console.WriteLine($"\n{part.StopGame()}");
+
                         break;
                     case "2":
                         duration = false;
+                        break;
+                    default:
+                        Console.WriteLine("Ошибка: Неправильная команда");
                         break;
                 }
             }

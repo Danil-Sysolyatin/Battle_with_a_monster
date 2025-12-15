@@ -47,9 +47,9 @@ namespace Battle_with_a_monster
 
         }
 
-        public string Health 
+        public int Health 
         {
-            get { return $"{_health}"; }
+            get { return _health; }
 
         }
 
@@ -82,6 +82,10 @@ namespace Battle_with_a_monster
         public int TakeDamage(int damage)
         {
             _health = _health - damage;
+            if (_health < 0) 
+            {
+                _health = 0;
+            }
             return _health;
         }
 
